@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<title> 
+			Mortgage Scheduler
+		</title> 
+		<style>
+		body {background: #f1f1c1}
+		table, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		}
+		th, td {
+		    padding: 5px;
+		}
+		</style>
+
+</head>
+
+<body>
+<!-- container for basic bootstrap control -->
+		<div class="container">
+		
+			<!-- bootstrap has its own fieldset style -->
+			<fieldset> 
+				<legend> 
+					Mortgage Schedule Calculator
+				</legend> 
+				
+				<!-- all forms should have the role attribute for screen readers -->
+				<form id="inputForm" role="form"> 
+				
+					<!-- put all form inputs in a div with class form-group -->
+					<div class="form-group"> 
+						<label for="loanAmountTB" >Principal Loan Amount: </label>
+						<!-- form-control class for inputs to take up the whole width of the screen
+							 and they are vertical (label above the input) for mobile devices -->
+						<input type="number" class="form-control" id="loanAmountTB" placeholder="Enter Loan Amount"/> 
+					</div>	
+
+			        <div class="form-group"> 
+						<label for="interestRateTB">Annual Interest Rate: </label>
+						<input type="number" name="interestRateTB" class="form-control" id="interestRateTB" placeholder="Enter Interest Rate %"/> 			
+				    </div>	
+
+
+					<div class="form-group">	
+						<label for="loanTermDD">No. of Years</label>
+							
+							<select class="form-control" id="loanTermDD"> 
+							<option value="fifteen">15 Years</option> 
+							<option value="twenty">20 Years</option> 
+							<option value="thirty" selected="selected">30 Years</option> 
+						</select> 					
+					</div>
+				</div>						
+			</div>
+                   
+                   <div class="container">
+					<div class="form-group">
+						<!-- all bootstrap buttons should have class btn and a button type -->
+						<button type="button" id="submitButton" class="btn btn-default">
+							<!-- a glyphicon is a scalable pic that can be used in controls. 
+							always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
+							<span class="glyphicon glyphicon-refresh"></span>
+							Display the Data 
+						</button>
+						
+						<button type="button" id="clearButton" class="btn btn-default">
+							Clear Results <span class="glyphicon glyphicon-flash"></span>
+						</button>	
+					</div>
+				</div>
+					
+				</form>		
+				
+				<!-- place to hold results -->
+				<div id="outputDiv"> 
+				</div> 
+				
+			</fieldset>	
+		</div>
+
+		<!--Create a summary table to hold the outputs-->
+           <div class="container">
+           <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th>&nbsp;</th>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                 <th>&nbsp;</th>
+                 <td>&nbsp;</td>
+               </tr>
+               <tr>
+                 <th>&nbsp;</th>
+                 <td>&nbsp;</td>
+               </tr>
+              <tr>
+               <th>&nbsp;</th>
+               <td>&nbsp;</td>
+             </tr>
+               <tr>
+                 <th>&nbsp;</th>
+                 <td>&nbsp;</td>
+              </tr>
+             <tr>
+              <th>&nbsp;</th>
+              <td>&nbsp;</td>
+              </tr>
+           </table>
+         </div>
+     </div>
+                <!--<tr> -->
+                <!-- <th>Principal Loan Amount:</th>
+                <td>Nellie</td>
+              </tr>
+              <tr>
+                 <th>Annual Interest Rate:</th>
+                 <td>output += + interestRate + </td>
+               </tr>
+               <tr>
+                 <th>Monthly Payment:</th>
+                 <td>output += + monthlyPayment +</td>
+               </tr>
+              <tr>
+               <th>Loan Amount Paid:</th>
+               <td>""</td>
+             </tr> -->
+               <!-- <tr>
+                 <th>Monthly Interest Rate Paid:</th>
+                 <td>output += + monthlyRate +</td>
+              </tr> --> 
+            <!-- <tr>
+              <th>Ratio of Amount Paid Over Principal:</th>
+              <td>""</td>
+              </tr> -->
+       
+         
+
+					<!--JavaScript Part-->
+					<script>
+					//register the event handlers
+			//get the buttons
+			var submitButton = document.querySelector("#submitButton");
+			var clearButton = document.querySelector("#clearButton");
+			
+			//link the click event on the button to the display function
+			submitButton.addEventListener("click", display, false);
+			clearButton.addEventListener("click", clear, false);
+
+			//function to be called when the button is clicked 
+			function display(event)
+			{			
+				//store a big string of results
+				var output = "<hr>";
+
+				//grab the values from the textboxes
+				var loanAmount = document.querySelector("#loanAmountTB").value;
+				var interestRate = document.querySelector("#interestRateTB").value;
+
+				//add the name and password to the result string
+				output += "You Entered: " + loanAmount + "<br/><hr>";
+                output += "You Entered: " + interestRate + "<br/><hr>";
+				
+				
+				//grab the ddl object
+				var loanTerm = document.querySelector("#loanTermDD");
+				//get the index of the selected item- 0 for the first, 1 for the second, etc
+				var yearIndex = loanTerm.selectedIndex;
+				//go to the ddl options array and use the index to grab the selected item's 
+				//text and hidden value
+                var yearName = loanTerm.options[yearIndex].text;
+			    var yearVal = parseInt(yearName);
+                 
+
+				//add more to the output
+				output += "You Chose: " + yearName + "<br/><hr>";
+				
+				var monthlyRate = (interestRate/12);
+				var numMonths = (yearVal*12);
+                var simplifier = (1-Math.pow((1+monthlyRate),-numMonths));
+				var monthlyPayment = ((monthlyRate/simplifier)*loanAmount);
+
+				output += "Your Monthly Payment is: " + monthlyPayment + "<br/><hr>";
+
+                //access the inner html of the div and place the result string in there
+				document.querySelector("#outputDiv").innerHTML = output;
+
+            }
+            //function to clear out the output div
+			function clear(e) {
+				//get the output div
+				var outputDiv = document.querySelector("#outputDiv");
+				
+				//clear out the entire contents of the div
+				outputDiv.innerHTML = "";
+			}
+          
+
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  		
+
+</body>
+
+</html>
