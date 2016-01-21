@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<title>cHub Chat</title>
+		<style>
+		 body {background: linear-gradient(to bottom right, white, #C70039); height:1000px;}
+		 .headerx{position: fixed; width: 100%; height: 100px; top: 0;left: 0;color: white;z-index: 7;font-family: verdana;-webkit-box-shadow: 0 3px 8px rgba(0,0,0, .25)}
+		 .header {position: fixed; width: 100%; height: 100px; top: 0;left: 0;background: #C70039;z-index: 7;font-family: verdana}
+		 #img1 { left: 150px; height: 90px; width: 110px; top: 10px; }
+		 #form1 {left: 700px; top: 20px; height: 60px; width: 180px;}
+		 #form2 {left: 895px; top: 20px; height: 60px; width: 200px;}
+		 .submit1 {left: 1100px; top: 39px; background: white; color: #142170; position: absolute; z-index: 20; height: 22px; width: 60px; cursor: pointer; border-radius: 10px/10px; color: teal;}
+		 .bodyx { position: absolute; left: 0; top: 100px; width: 100%; height: 645px}
+		 #intro1 {top: 40px; left: 20px; font-family: verdana; font-size: 30px; color: #142170; width: 550px; height: 75px;}
+		 #intro2 {top: 40px; left: 700px; font-family: verdana; font-size: 50px; color: #142170; width: 500px; height: 60px;}
+		 #img2 { left: 20px; height: 250px; width: 550px; top: 130px; }
+		 #intro3 {top: 100px; left: 700px; font-family: verdana; font-size: 20px; color: #142170; width: 300px; height: 50px;}
+		 #form3 {top: 180px; left: 700px; font-family: verdana; font-size: 20px; color: #142170; width: 450px; height: 495px;}
+		 #namebox { width: 225px; height: 50px; border-radius: 10px/10px;padding: 10px;background: white; font-size:20px;}
+		 #mailbox {width: 450px; height: 50px; border-radius: 10px/10px;padding: 10px;background: white; font-size:20px;}
+		 .button2 {width: 100px; height: 50px; top: 770px; left: 700px; position: absolute; background: white ; color:teal ;font-size: 20px; border-radius: 50px/50px; cursor:pointer; ; outline: none;}
+		</style>
+	</head>
+
+	<body>
+        <!--This creates my header so I can have my title-->
+		<div class="container">
+		<div class="headerx"></div>
+		<div class="header">
+		<div id="img1" class="header"><img src="chub.png"/></div>
+			<div id="form1" class="header"> Email or Username<br>
+				<input placeholder="Email" type="mail" name="name" /><br>
+				<input type="checkbox" />Keep me online
+			</div>
+			<div id="form2" class="header"> Password <br>
+				<input placeholder="Password" type="password" name ="password" /><br>
+				Forgot Password? 
+			</div>
+			<input type="submit" class="submit1" value="LogIn" />
+		</div>
+	</div>
+		<!-- The body of the Login Page -->
+		<div class="container-fluid">
+				<div class="bodyx">				
+						<div id= "intro1" class="bodyx"> cHub helps you connect and share<br>
+							with CarthRage Members! </div>
+							<div id="intro2" class="bodyx"> Create an Account </div>
+							<div id="img2" class="bodyx"><img src="chub1.png" /></div> 
+							<div id="intro3" class="bodyx"> Free Instant Messaging.No network or Data Plan Needed </div><br>
+                        <!--This is the sign up form -->
+							<div class = "container">
+				                <div id="form3" class="bodyx">
+									<input placeholder="Firstname" type="text" name="name1" id="namebox" /><input placeholder="Lastname" type="text" id="namebox" /><br><br>
+									<input placeholder="Email" type="text" id="mailbox" /><br><br>
+									<input placeholder="Confirm Email" type="text" id="mailbox" /><br><br>
+									<input placeholder="Password" type="password" id="mailbox" /><br><br>
+									<input  type="date" id="namebox" /><br><br>
+									<input  type="radio" name="sex"  value="male"/>Male
+									<input  type="radio" name="sex"  value="female"/> Female <br><br>
+									By Clicking SignUp, you agree to our Terms<br><br>
+									<br><hr>
+								</div>
+							</div>
+					</div>
+			</div>
+			<input  type="submit" class="button2"  value="SignUp"/>
+
+                <!--Takes the user to the main chatroom-->
+                <a href="chubpage.html" class="btn btn-primary block" role="button">Login</a>
+                <a href="chubpage.html" class="btn btn-primary block" role="button">SignUp</a>
+
+
+                <!--Chatroom Design--> 
+       
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- JQuery UI. You must include this to get access to the UI widgets -->
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<!-- firebase library -->
+		<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+        <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+		
+		<script>
+
+		     $('.submit1').click(function(){
+               window.location.href='chubpage.html';
+              });
+		     $('.button2').click(function(){
+               window.location.href='chubpage.html';
+              })
+
+
+
+			$(document).ready(function() {
+				
+				//get a reference to our firebase right away when the page loads
+				var myFirebaseRef = new Firebase("https://na-chub.firebaseio.com/");
+                                
+                //set up a button handler to add a guest to the guestbook
+                $("#addGuestButton").on("click", function(e) {
+                 
+                    //get the guest name
+                    var guestFirstName = $("#guestFirstNameTB").val();
+                    var guestMiddleName = $("#guestMiddleNameTB").val();
+                    var guestLastName = $("#guestLastNameTB").val();
+                    var guestEmail = $("#guestEmailTB").val();
+                    var guestPhone = $("#guestPhoneTB").val();
+                    
+                    //add the key/value pair off of the root
+                    
+                    //you can pass in an even more complex object and it will add 
+                    //all of the members and sub-members
+                    myFirebaseRef.push({name: {firstName: guestFirstName, middleName: guestMiddleName, lastName: guestLastName}, email: guestEmail, phone: guestPhone});
+                    
+                    //clear the text boxes to get ready for the next guest
+                    $("#guestFirstNameTB").val("");
+                    $("#guestMiddleNameTB").val("");
+                    $("#guestLastNameTB").val("");
+                    $("#guestEmailTB").val("");
+                    $("#guestPhoneTB").val("");
+                    
+                });
+                
+                //set up a button handler
+                $("#clearGuestbookButton").on("click", function(e) {
+                    //to clear the entire firebase set the root to null
+                    myFirebaseRef.set(null);    
+                });
+
+			});
+
+		</script>
+	</body>
+</html>

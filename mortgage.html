@@ -23,13 +23,11 @@
 		</title> 
 		<style>
 		body {background: #f1f1c1}
-		table, th, td {
-		    border: 1px solid black;
-		    border-collapse: collapse;
-		}
-		th, td {
-		    padding: 5px;
-		}
+		
+		table{background:#CCC;border:1px solid #000;border-collapse: collapse;}
+        table td{padding:15px;border:1px solid #DDD;border-collapse: collapse;}
+        tr:hover{background-color:#f5f5f5}
+
 		</style>
 
 </head>
@@ -97,66 +95,23 @@
 				
 			</fieldset>	
 		</div>
+           
 
-		<!--Create a summary table to hold the outputs-->
-           <div class="container">
-           <div class="table-responsive">
-            <table class="table">
-              <tr>
-                <th>&nbsp;</th>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                 <th>&nbsp;</th>
-                 <td>&nbsp;</td>
-               </tr>
-               <tr>
-                 <th>&nbsp;</th>
-                 <td>&nbsp;</td>
-               </tr>
-              <tr>
-               <th>&nbsp;</th>
-               <td>&nbsp;</td>
-             </tr>
-               <tr>
-                 <th>&nbsp;</th>
-                 <td>&nbsp;</td>
-              </tr>
-             <tr>
-              <th>&nbsp;</th>
-              <td>&nbsp;</td>
-              </tr>
-           </table>
-         </div>
-     </div>
-                <!--<tr> -->
-                <!-- <th>Principal Loan Amount:</th>
-                <td>Nellie</td>
-              </tr>
-              <tr>
-                 <th>Annual Interest Rate:</th>
-                 <td>output += + interestRate + </td>
-               </tr>
-               <tr>
-                 <th>Monthly Payment:</th>
-                 <td>output += + monthlyPayment +</td>
-               </tr>
-              <tr>
-               <th>Loan Amount Paid:</th>
-               <td>""</td>
-             </tr> -->
-               <!-- <tr>
-                 <th>Monthly Interest Rate Paid:</th>
-                 <td>output += + monthlyRate +</td>
-              </tr> --> 
-            <!-- <tr>
-              <th>Ratio of Amount Paid Over Principal:</th>
-              <td>""</td>
-              </tr> -->
+              <div class="container" id="dynamictable">
+              	<caption>Loan Summary</caption>
+              </div>
        
          
 
 					<!--JavaScript Part-->
+
+					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+		<!-- JQuery UI. You must include this to get access to the UI widgets -->
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 					<script>
 					//register the event handlers
 			//get the buttons
@@ -178,8 +133,8 @@
 				var interestRate = document.querySelector("#interestRateTB").value;
 
 				//add the name and password to the result string
-				output += "You Entered: " + loanAmount + "<br/><hr>";
-                output += "You Entered: " + interestRate + "<br/><hr>";
+				//output += "You Entered: " + loanAmount + "<br/><hr>";
+                //output += "You Entered: " + interestRate + "<br/><hr>";
 				
 				
 				//grab the ddl object
@@ -193,14 +148,74 @@
                  
 
 				//add more to the output
-				output += "You Chose: " + yearName + "<br/><hr>";
+				//output += "You Chose: " + yearName + "<br/><hr>";
 				
 				var monthlyRate = (interestRate/12);
 				var numMonths = (yearVal*12);
                 var simplifier = (1-Math.pow((1+monthlyRate),-numMonths));
 				var monthlyPayment = ((monthlyRate/simplifier)*loanAmount);
+				var loanAmntPaid = (monthlyPayment - monthlyRate);
+				var ratio = (loanAmntPaid/loanAmount);
 
-				output += "Your Monthly Payment is: " + monthlyPayment + "<br/><hr>";
+				//output += "Your Monthly Payment is: " + monthlyPayment + "<br/><hr>";
+
+				//Create a summary table to hold the outputs
+				$('#dynamictable').append('<table></table>');
+          var table = $('#dynamictable').children();    
+           table.append("<tr><td>Principal Loan Amount:</td><td>" + loanAmount +"</td></tr>");
+           table.append("<tr><td>Annual Interest Rate:</td><td>" + interestRate + "</td></tr>");
+           table.append("<tr><td>Monthly Payment:</td><td>" + monthlyPayment + "</td></tr>");
+           table.append("<tr><td>Loan Amount Paid:</td><td>"+ loanAmntPaid + "</td></tr>");
+           table.append("<tr><td>Monthly Interest Rate Paid:</td><td>" + monthlyRate + "</td></tr>");
+           table.append("<tr><td>Ratio of Amount Paid Over Principal:</td><td>" + ratio + "</td></tr>");
+
+           	//Get the total principal paid and total interest
+	      var principalPaid = 0,
+	    	  totalInterestPaid = 0,
+	          remainingBalance = loanAmount;
+
+           //Create the Monthly schedule
+            for(var i = 0; i < numMonths; i++)
+	    {
+	        var interest = monthlyRate * principalBalance;
+	        var paymentForPrincipal = monthlyPayment - interest;
+
+	        totalInterestPaid = totalInterestPaid + interest;
+	        principalPaid = principalPaid + paymentForPrincipal;
+	        remainingBalance = remainingBalance - paymentForPrincipal;
+	    }
+
+	    //Ensure the results are to two decimal points
+	    var totalPaid = parseInt(totalInterest) + parseInt(loan);
+	    var paidToPrincipal = (totalPaid / loan);
+
+	    //Create an array of arrays to hold the items of the list
+	    var summaryTablelabels = [["Loan", loan], 
+	                  ["Annual Rate", annualRate], 
+	                  ["Monthly Payment", monthlyPayment.toFixed(2)],
+	                  ["Total Paid" , totalPaid.toFixed(2)], 
+	                  ["Total Interest" , totalInterest.toFixed(2)],
+	                  ["Ratio: PaidToPrincipal", paidToPrincipal.toFixed(2)]];
+
+
+		//Create the Mortgage summary table only if it does not exist
+		var retVal1 = $("summaryTableOutputDiv").length;
+		var retVal2 = $("amortizationScheduleOutputDiv").length;
+
+
+	    if(retVal1 == 0 && retVal2 == 0)
+	    {
+	       createSummaryScheduleHeading();
+
+	       $("#summaryTableOutputDiv").append(createSummaryTable(summaryTablelabels, 6, 2));
+	       $("#amortizationScheduleOutputDiv").append(createamortizationTable(numberOfMonths,monthlyPayment,annualRate,loan)); 
+	       hideTableRows(start, end);
+	    } 
+	});
+
+
+
+
 
                 //access the inner html of the div and place the result string in there
 				document.querySelector("#outputDiv").innerHTML = output;
@@ -214,15 +229,12 @@
 				//clear out the entire contents of the div
 				outputDiv.innerHTML = "";
 			}
-          
+
+			
+
+
 
 </script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  		
-
 </body>
 
 </html>
