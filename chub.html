@@ -22,22 +22,26 @@
 
 		<title>cHub Chat</title>
 		<style>
-		 body {background: linear-gradient(to bottom right, white, #C70039); height:1000px;}
-		 .headerx{position: fixed; width: 100%; height: 100px; top: 0;left: 0;color: white;z-index: 7;font-family: verdana;-webkit-box-shadow: 0 3px 8px rgba(0,0,0, .25)}
-		 .header {position: fixed; width: 100%; height: 100px; top: 0;left: 0;background: #C70039;z-index: 7;font-family: verdana}
+		@import url(https://fonts.googleapis.com/css?family=Satisfy|Lato:300,700,300italic,700italic);
+		 body {background: linear-gradient(to bottom right, white, #C70039); height:1000px; font-family: andalus;}
+		 .strong { font-weight: bold; font-size: 40px;}
+         .satisfy { font-family: 'Satisfy', cursive; font-size: 40px; }
+		 .headerx{position: fixed; width: 100%; height: 100px; top: 0;left: 0;color: white;z-index: 7;font-family: andalus;-webkit-box-shadow: 0 3px 8px rgba(0,0,0, .25)}
+		 .header {position: fixed; width: 100%; height: 100px; top: 0;left: 0;background: #C70039;z-index: 7;font-family: andalus;}
 		 #img1 { left: 150px; height: 90px; width: 110px; top: 10px; }
-		 #form1 {left: 700px; top: 20px; height: 60px; width: 180px;}
-		 #form2 {left: 895px; top: 20px; height: 60px; width: 200px;}
-		 .submit1 {left: 1100px; top: 39px; background: white; color: #142170; position: absolute; z-index: 20; height: 22px; width: 60px; cursor: pointer; border-radius: 10px/10px; color: teal;}
+		 #home-title {top: 0px; left: 260px; color: white; width: 550px; height: 75px; font-family: 'Satisfy', cursive; font-weight: bold; font-size: 70px;}
+		 #form1 {left: 700px; top: 20px; height: 60px; width: 160px;}
+		 #form2 {left: 924px; top: 20px; height: 60px; width: 180px;}
+		 .submit1 {left: 1150px; top: 42px; background: white; color: #142170; position: absolute; z-index: 20; height: 22px; width: 60px; cursor: pointer; border-radius: 10px/10px; color: teal;}
 		 .bodyx { position: absolute; left: 0; top: 100px; width: 100%; height: 645px}
-		 #intro1 {top: 40px; left: 20px; font-family: verdana; font-size: 30px; color: #142170; width: 550px; height: 75px;}
-		 #intro2 {top: 40px; left: 700px; font-family: verdana; font-size: 50px; color: #142170; width: 500px; height: 60px;}
-		 #img2 { left: 20px; height: 250px; width: 550px; top: 130px; }
-		 #intro3 {top: 100px; left: 700px; font-family: verdana; font-size: 20px; color: #142170; width: 300px; height: 50px;}
-		 #form3 {top: 180px; left: 700px; font-family: verdana; font-size: 20px; color: #142170; width: 450px; height: 495px;}
-		 #namebox { width: 225px; height: 50px; border-radius: 10px/10px;padding: 10px;background: white; font-size:20px;}
-		 #mailbox {width: 450px; height: 50px; border-radius: 10px/10px;padding: 10px;background: white; font-size:20px;}
-		 .button2 {width: 100px; height: 50px; top: 770px; left: 700px; position: absolute; background: white ; color:teal ;font-size: 20px; border-radius: 50px/50px; cursor:pointer; ; outline: none;}
+		 #intro1 {top: 40px; left: 70px; font-family: arabic typesetting; font-size: 40px; color: #142170; width: 550px; height: 75px;}
+		 #intro2 {top: 40px; left: 800px; font-family: andalus; font-size: 50px; color: #142170; width: 500px; height: 60px;}
+		 #img2 { left: 70px; height: 250px; width: 550px; top: 150px; }
+		 #intro3 {top: 100px; left: 800px; font-family: andalus; font-size: 20px; color: #142170; width: 300px; height: 50px;}
+		 /*#form3 {top: 180px; left: 800px; font-family: verdana; font-size: 20px; color: #142170; width: 450px; height: 495px;}*/
+		 #form3 {border-radius: 10px/10px;padding: 10px; font-size:20px;}
+		 /*#mailbox {width: 450px; height: 50px; border-radius: 10px/10px;padding: 10px;background: white; font-size:20px;}*/
+		 .button2 {width: 100px; height: 50px; top: 650px; left: 800px; position: absolute; background: white ; color:teal ;font-size: 20px; border-radius: 50px/50px; cursor:pointer; ; outline: none;}
 		</style>
 	</head>
 
@@ -47,27 +51,28 @@
 		<div class="headerx"></div>
 		<div class="header">
 		<div id="img1" class="header"><img src="chub.png"/></div>
+		<div id="home-title" class ="header"><span class="strong">c</span><span class="satisfy">Hub</span></div>
 			<div id="form1" class="header"> Email or Username<br>
-				<input placeholder="Email" type="mail" name="name" /><br>
+				<input placeholder="Email" type="mail" name="name" id ="mailbox" /><br>
 				<input type="checkbox" />Keep me online
 			</div>
 			<div id="form2" class="header"> Password <br>
-				<input placeholder="Password" type="password" name ="password" /><br>
+				<input placeholder="Password" type="password" name ="password" id = "Pass" /><br>
 				Forgot Password? 
 			</div>
 			<input type="submit" class="submit1" value="LogIn" />
 		</div>
 	</div>
 		<!-- The body of the Login Page -->
-		<div class="container-fluid">
-				<div class="bodyx">				
-						<div id= "intro1" class="bodyx"> cHub helps you connect and share<br>
+		<div class="container">
+				<div class="bodyx container">				
+						<div id= "intro1" class="bodyx"><span class="strong">c</span><span class="satisfy">Hub</span>    helps you connect and share<!--hr>-->
 							with CarthRage Members! </div>
 							<div id="intro2" class="bodyx"> Create an Account </div>
-							<div id="img2" class="bodyx"><img src="chub1.png" /></div> 
-							<div id="intro3" class="bodyx"> Free Instant Messaging.No network or Data Plan Needed </div><br>
+							<div id="img2" class="bodyx"><img src="chub3.png" /></div> 
+							<div id="intro3" class="bodyx"> Free Instant Messaging. No network or Data Plan Needed </div><br>
                         <!--This is the sign up form -->
-							<div class = "container">
+							<!--<div class = "container">
 				                <div id="form3" class="bodyx">
 									<input placeholder="Firstname" type="text" name="name1" id="namebox" /><input placeholder="Lastname" type="text" id="namebox" /><br><br>
 									<input placeholder="Email" type="text" id="mailbox" /><br><br>
@@ -79,18 +84,69 @@
 									By Clicking SignUp, you agree to our Terms<br><br>
 									<br><hr>
 								</div>
-							</div>
+							</div>-->
 					</div>
 			</div>
-			<input  type="submit" class="button2"  value="SignUp"/>
+			<!--<input  type="submit" class="button2"  value="SignUp"/>-->
+            <!--<div class="row">-->
+            <!--<div class="col-sm-4 col-sm-offset-8<br>">-->
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<div class="container row col-sm-4 col-sm-offset-7">			            
+            <form id= "form3" role="form">                
+                
+                 <div class = "form-group">
+                 	<label for="firstName"></label>
+                    <input placeholder="Firstname" type="text" id="firstName" /> 
+                </div>
+ 
+                <div class = "form-group">
+                <label for="lastName"></label>  
+                    <input placeholder="Lastname" type="text" id="lastName" /> 
+                </div>
+            
+                
+                <div class="form-group">
+                <label for="mailbox"></label> 
+                    <input placeholder="Email" type="text" id="mailbox" />
+                </div>	 
+
+                <div class="form-group">
+                 <label for="mailbox"></label>
+                    <input placeholder="Confirm Email" type="text" id="mailbox" />
+                </div>	 
+
+                <div class="form-group">
+                <label for="Pass"></label> 
+                <input placeholder="Password" type="password" id="Pass" />
+                </div>	 
+
+                <div class="form-group">
+                <label for="Date"></label> 
+                    <input  type="date" id="Date" />
+                </div>
+                <div class="form-group"> 
+                    <input  type="radio" name="sex"  value="male"/>Male
+					<input  type="radio" name="sex"  value="female"/> Female 
+                </div>
+                		 By Clicking SignUp, you agree to our Terms.<br>
+                <!--<div>
+                    <input  type="submit" class="button2"  value="SignUp"/>
+                </div>-->
+                <!--<button id = "button2" class="btn btn-default" type="button">SignUp</button>-->                                
+            </form>
+		</div>
+		</div>
+			<input type="submit" class="button2" value="SignUp" />
+		</div>
+</div>
+	
+
 
                 <!--Takes the user to the main chatroom-->
-                <a href="chubpage.html" class="btn btn-primary block" role="button">Login</a>
-                <a href="chubpage.html" class="btn btn-primary block" role="button">SignUp</a>
-
-
-                <!--Chatroom Design--> 
-       
+                <!--<a href="chubpage.html" class="btn btn-primary block" role="button">Login</a>
+                <a href="chubpage.html" class="btn btn-primary block" role="button">SignUp</a>-->
+ 
+              <!--JAVASCRIPT PART-->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
@@ -103,12 +159,13 @@
 		
 		<script>
 
-		     $('.submit1').click(function(){
-               window.location.href='chubpage.html';
-              });
-		     $('.button2').click(function(){
-               window.location.href='chubpage.html';
-              })
+		     
+		     // $('.button2').click(function(){
+       //         window.location.href='chubpage.html';
+       //        })
+            $('input:radio[name=sex]').click(function() { 
+            	var userSex = $('input:radio[name=sex]:checked').val(); 
+            });
 
 
 
@@ -117,36 +174,80 @@
 				//get a reference to our firebase right away when the page loads
 				var myFirebaseRef = new Firebase("https://na-chub.firebaseio.com/");
                                 
-                //set up a button handler to add a guest to the guestbook
-                $("#addGuestButton").on("click", function(e) {
-                 
-                    //get the guest name
-                    var guestFirstName = $("#guestFirstNameTB").val();
-                    var guestMiddleName = $("#guestMiddleNameTB").val();
-                    var guestLastName = $("#guestLastNameTB").val();
-                    var guestEmail = $("#guestEmailTB").val();
-                    var guestPhone = $("#guestPhoneTB").val();
-                    
-                    //add the key/value pair off of the root
-                    
+                //set up a button handler to add a user to the database
+                $('.submit1 , .button2').click(function(){
+               window.location.href='chubpage.html';
+
+               //get the user info
+                    var userFirstName = $("#firstName").val();
+                    var userLastName = $("#lastName").val();
+                    var userEmail = $("#mailbox").val();
+                    var userPassword = $("#Pass").val();
+                    var userBirthday = $("#Date").val();
+                    var userSex = $('input:radio[name=sex]:checked').val(); 
+
+                    //add the key/value pair off of the root                    
                     //you can pass in an even more complex object and it will add 
                     //all of the members and sub-members
-                    myFirebaseRef.push({name: {firstName: guestFirstName, middleName: guestMiddleName, lastName: guestLastName}, email: guestEmail, phone: guestPhone});
-                    
-                    //clear the text boxes to get ready for the next guest
-                    $("#guestFirstNameTB").val("");
-                    $("#guestMiddleNameTB").val("");
-                    $("#guestLastNameTB").val("");
-                    $("#guestEmailTB").val("");
-                    $("#guestPhoneTB").val("");
-                    
-                });
-                
-                //set up a button handler
-                $("#clearGuestbookButton").on("click", function(e) {
-                    //to clear the entire firebase set the root to null
-                    myFirebaseRef.set(null);    
-                });
+                    myFirebaseRef.push({name: {firstName: userFirstName, lastName: userLastName}, email: userEmail, password: userPassword, birthday: userBirthday, sex: userSex});
+
+                    //clear the text boxes to get ready for the next user
+                    $("#firstName").val("");
+                    $("#lastName").val("");
+                    $("#mailbox").val("");
+                    $("#Pass").val("");
+                    $("#Date").val("");
+                    $('input:radio[name=sex]:checked').val("");
+
+                    });
+
+           //          //Create the User Account
+           //          myFirebaseRef.createUser({
+           //          email    : "userEmail", 
+			        // }, function(error, userData) {
+			        // if (error) {
+			        //  console.log("Error creating user:", error);
+			        //   } else {
+			        //  console.log("Successfully created user account with uid:", userData.uid);
+			        //  }
+           //          }); 
+
+           //          //Login User by Authentication using Email and Password.
+           //           myFirebaseRef.authWithPassword({
+           //           email    : "userEmail",
+           //           password : "userPassword"
+           //           }, function(error, authData) {
+           //           if (error) {
+           //            console.log("Login Failed!", error);
+           //           } else {
+           //          console.log("Authenticated successfully with payload:", authData);
+           //             }
+           //          });
+
+           //           // Add a callback that is triggered for each user.
+           //           myFirebaseRef.limitToLast(10).on('child_added', function (snapshot) {
+           //             //GET DATA
+           //             var data = snapshot.val();
+           //             var userFirstName = data.name;
+           //             var userLastName = data.name;
+           //             var userEmail =    data.text;
+           //             var userPassword = data.text;
+           //             var userBirthday = data.text;
+           //             var userSex = data.text;
+
+           //             //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+           //             var messageElement = $("<li>");
+           //             var nameElement = $("<strong class='example-chat-username'></strong>")
+           //             nameElement.text(username);
+           //             messageElement.text(message).prepend(nameElement);
+
+           //             //ADD MESSAGE
+           //             messageList.append(messageElement)
+
+           //             //SCROLL TO BOTTOM OF MESSAGE LIST
+           //             messageList[0].scrollTop = messageList[0].scrollHeight;
+
+              
 
 			});
 
