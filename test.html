@@ -14,6 +14,11 @@
     <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
   </head>
   <body>
+
+      <div id='firechat-wrapper'>
+      <a href='#' onclick='login("twitter");'>Login</a>
+      </div>
+
     <script type='text/javascript'>
       // Create a new Firebase reference, and a new instance of the Login client
       var chatRef = new Firebase('https://<YOUR-FIREBASE>.firebaseio.com/chat');
@@ -32,8 +37,6 @@
         });
       }
     </script>
-    <div id='firechat-wrapper'>
-      <a href='#' onclick='login("twitter");'>Login</a>
-    </div>
+    
   </body>
 </html>

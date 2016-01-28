@@ -2,7 +2,7 @@
 /* Global
 -------------------------------------------------- */
 body {
-  font: 14.5px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14.5px/1.5 Lato, "Helvetica Neue", Helvetica,  ;
   color:#777;
   font-weight:300;
   background: #f1f1c1;
@@ -49,7 +49,7 @@ header {
   display: none; }
 
 .l-demo-container {
-  width: 500px;
+  width: 1000px;
   margin: 40px auto 0px auto; }
 
 .example-chat {
